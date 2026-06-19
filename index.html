@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Producción APT - Reporte Semanal</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <h1>Control de Producción APT - Planta</h1>
+
+    <div class="tabs-container">
+        <button class="tab-button active" onclick="openTab('tab-8237')">Ficha 8237 (Datos Diarios)</button>
+        <button class="tab-button" onclick="openTab('tab-semana')">Semana 27 de Mayo al 1 de Jun</button>
+    </div>
+
+    <div id="tab-8237" class="tab-content active">
+        <h2>Registro de Producción por Turnos (Ficha 8237)</h2>
+        <p>Introduce las Piezas y Kilogramos correspondientes a cada turno. Los totales se calculan dinámicamente.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Día</th>
+                    <th rowspan="2">Fecha</th>
+                    <th colspan="2" class="turno-header">1er. Turno</th>
+                    <th colspan="2" class="turno-header">2do. Turno</th>
+                    <th colspan="2" class="turno-header">3er. Turno</th>
+                    <th colspan="2" class="total-header">Total Diario (Fórmula)</th>
+                </tr>
+                <tr>
+                    <th class="turno-header">Piezas</th>
+                    <th class="turno-header">Kg.</th>
+                    <th class="turno-header">Piezas</th>
+                    <th class="turno-header">Kg.</th>
+                    <th class="turno-header">Piezas</th>
+                    <th class="turno-header">Kg.</th>
+                    <th class="total-header">Piezas</th>
+                    <th class="total-header">Kg.</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-cuerpo-8237">
+                <tr class="fila-dato">
+                    <td>Miércoles</td>
+                    <td>2026-05-27</td>
+                    <td><input type="number" class="p1" value="4326" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k1" value="11567" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="p2" value="5495" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k2" value="21631" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="p3" value="4397" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k3" value="10409" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="tot-p readonly-input" readonly value="0"></td>
+                    <td><input type="number" class="tot-k readonly-input" readonly value="0"></td>
+                </tr>
+                <tr class="fila-dato">
+                    <td>Jueves</td>
+                    <td>2026-05-28</td>
+                    <td><input type="number" class="p1" value="3566" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k1" value="14192" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="p2" value="7781" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k2" value="8878" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="p3" value="4619" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k3" value="19329" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="tot-p readonly-input" readonly value="0"></td>
+                    <td><input type="number" class="tot-k readonly-input" readonly value="0"></td>
+                </tr>
+                <tr class="fila-dato">
+                    <td>Viernes</td>
+                    <td>2026-05-29</td>
+                    <td><input type="number" class="p1" value="3297" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k1" value="8959" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="p2" value="7696" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k2" value="11278" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="p3" value="4758" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k3" value="14613" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="tot-p readonly-input" readonly value="0"></td>
+                    <td><input type="number" class="tot-k readonly-input" readonly value="0"></td>
+                </tr>
+                <tr class="fila-dato">
+                    <td>Sábado</td>
+                    <td>2026-05-30</td>
+                    <td><input type="number" class="p1" value="10577" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k1" value="15943" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="p2" value="1360" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k2" value="1095" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="p3" value="0" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k3" value="0" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="tot-p readonly-input" readonly value="0"></td>
+                    <td><input type="number" class="tot-k readonly-input" readonly value="0"></td>
+                </tr>
+                <tr class="fila-dato">
+                    <td>Lunes</td>
+                    <td>2026-06-01</td>
+                    <td><input type="number" class="p1" value="2800" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k1" value="6200" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="p2" value="4100" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k2" value="9500" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="p3" value="3100" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="k3" value="7200" oninput="procesarCalculos()"></td>
+                    <td><input type="number" class="tot-p readonly-input" readonly value="0"></td>
+                    <td><input type="number" class="tot-k readonly-input" readonly value="0"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="tab-semana" class="tab-content">
+        <h2>Resumen: Semana del 27 de Mayo al 1 de Junio</h2>
+        <p>Esta sección vincula automáticamente las sumatorias consolidadas desde la hoja de captura 8237.</p>
+
+        <div class="summary-cards-wrapper">
+            <div class="summary-card total-piezas-card">
+                <h3>Total General Piezas</h3>
+                <div id="resumen-total-piezas" class="value-highlight">0</div>
+            </div>
+            <div class="summary-card total-kilos-card">
+                <h3>Total General Kilos</h3>
+                <div id="resumen-total-kilos" class="value-highlight">0.00</div>
+            </div>
+        </div>
+
+        <h3>Detalle Consolidado de la Semana</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Concepto de Control</th>
+                    <th>Piezas Totales (Vínculo)</th>
+                    <th>Kilos Totales (Vínculo)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="fila-resumen-final">
+                    <td>TOTAL GENERAL DE LA SEMANA</td>
+                    <td id="tabla-resumen-piezas">0</td>
+                    <td id="tabla-resumen-kilos">0.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="controlador.js"></script>
+</body>
+</html>
